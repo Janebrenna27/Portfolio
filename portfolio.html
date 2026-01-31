@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jane Brenna Christy P - AI & Data Science Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #2d3748;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: block;
+            border: 5px solid white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            object-fit: cover;
+            animation: fadeInDown 1s ease 0.2s both;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .summary {
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.05em;
+            line-height: 1.8;
+            opacity: 0.85;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: #2d3748;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #a8edea;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #2d3748;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 2px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(168, 237, 234, 0.2);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(168, 237, 234, 0.15);
+        }
+
+        .skill-category h3 {
+            color: #4a9f9c;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .skill-category p {
+            color: #4a5568;
+            line-height: 1.8;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(168, 237, 234, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(168, 237, 234, 0.2);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #2d3748;
+            padding: 25px;
+        }
+
+        .project-header h3 {
+            font-size: 1.4em;
+            margin-bottom: 8px;
+        }
+
+        .project-tech {
+            font-size: 0.9em;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        .project-body {
+            padding: 25px;
+        }
+
+        .project-body p {
+            color: #4a5568;
+            line-height: 1.8;
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding-left: 50px;
+            margin-top: 40px;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 40px;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(168, 237, 234, 0.2);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 30px;
+            width: 16px;
+            height: 16px;
+            background: #a8edea;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px #a8edea;
+        }
+
+        .experience-item h3 {
+            color: #2d3748;
+            font-size: 1.4em;
+            margin-bottom: 8px;
+        }
+
+        .experience-item .company {
+            color: #4a9f9c;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .experience-item ul {
+            margin-left: 20px;
+            color: #4a5568;
+        }
+
+        .experience-item li {
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+
+        .education-grid {
+            display: grid;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .education-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid #a8edea;
+            transition: transform 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateX(10px);
+        }
+
+        .education-card h3 {
+            color: #2d3748;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .education-card .institution {
+            color: #4a9f9c;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .education-card .year {
+            color: #718096;
+            font-style: italic;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #2d3748;
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .contact h2 {
+            color: #2d3748;
+        }
+
+        .contact h2::after {
+            background: #2d3748;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            background: white;
+            color: #4a9f9c;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            border: 2px solid transparent;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(74, 159, 156, 0.2);
+            border-color: #4a9f9c;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            color: #4a5568;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid rgba(168, 237, 234, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .tagline {
+                font-size: 1.1em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 10px 0;
+            }
+
+            .experience-timeline {
+                padding-left: 30px;
+            }
+
+            .experience-item::before {
+                left: -28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <img src="images/jane.webp" alt="Jane Brenna Christy P" class="profile-photo">
+            <h1>Jane Brenna Christy P</h1>
+            <p class="tagline">AI & Data Science Enthusiast | Python Developer | ML Engineer</p>
+            <p class="summary">Passionate Computer Science undergraduate specializing in AI & Data Science, with hands-on experience in Python, ML, and data visualization. Proven ability to deliver solutions through internships and hackathon projects.</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="skills">
+            <h2>Technical Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <p>Python, C, Java</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <p>SQL Plus</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Libraries</h3>
+                    <p>Tableau, Docker, Matplotlib, Pandas, NumPy</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <p>Critical Thinking, Problem Solving, Communication, Teamwork</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Gender & Age Detection</h3>
+                        <p class="project-tech">Convolutional Neural Networks</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Developed a CNN-based system that achieves 85% accuracy in classifying gender and estimating age from facial images, leveraging deep learning techniques for robust pattern recognition.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Food Health Prediction</h3>
+                        <p class="project-tech">Regression Analysis</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Built a predictive model using nutrient datasets to assess food health scores. Improved prediction accuracy by 12% through advanced feature engineering and optimization techniques.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>InsidAI</h3>
+                        <p class="project-tech">Random Forest Algorithm</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Designed an ML system to monitor and analyze employee activity patterns. Successfully reduced false positives by 20% through refined model tuning and threshold optimization.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Work Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <h3>Intern</h3>
+                    <p class="company">Triumphal Tech Solutions | Summer 2025</p>
+                    <ul>
+                        <li>Developed Python scripts for data preprocessing and analysis, improving efficiency of internal workflows</li>
+                        <li>Collaborated with team to test and deploy solutions in real-world scenarios</li>
+                        <li>Gained hands-on experience in production-level code development and team collaboration</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3>Bachelor of Technology</h3>
+                    <p class="institution">Karunya Institute of Technology and Sciences</p>
+                    <p>Specialization in Artificial Intelligence and Data Science</p>
+                    <p class="year">Expected Graduation: May 2028</p>
+                </div>
+                <div class="education-card">
+                    <h3>Higher Secondary (Class XII)</h3>
+                    <p class="institution">The Akshaya Academy</p>
+                    <p class="year">Year of Completion: 2024</p>
+                </div>
+                <div class="education-card">
+                    <h3>Secondary (Class X)</h3>
+                    <p class="institution">Vivekanadhar Vidhya Mandir</p>
+                    <p class="year">Year of Completion: 2022</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="contact" id="contact">
+        <h2>Let's Connect</h2>
+        <div class="contact-links">
+            <a href="https://www.linkedin.com/in/jane-brenna-christy-p-189733363/" class="contact-btn" target="_blank">LinkedIn</a>
+            <a href="mailto:your.email@example.com" class="contact-btn">Email Me</a>
+            <a href="https://github.com/Janebrenna27" class="contact-btn" target="_blank">GitHub</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Jane Brenna Christy P. All rights reserved.</p>
+    </footer>
+</body>
+</html>
